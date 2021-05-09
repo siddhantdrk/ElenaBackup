@@ -56,7 +56,7 @@ public class HandleUtils {
             case REQUEST_CODE_OPEN_DOCUMENT:
                 Uri uri = data.getData();
                 if (uri != null) {
-                    MainActivity.myDbHelper = openFileFromFilePicker(uri, MainActivity.mDriveServiceHelper, context);
+                    MainActivity.myDbHelper = openFileFromFilePicker(uri, context);
                 }
                 break;
         }

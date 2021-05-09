@@ -68,12 +68,20 @@ public class UnZipAndBackup {
         try {
             Uri selectedImageUri = data.getData();
             String picturePath = getPath(context.getApplicationContext(), selectedImageUri);
+
+            LogUtils.logV(MainActivity.class.getSimpleName(), picturePath);
+            LogUtils.logV(MainActivity.class.getSimpleName(), context.getExternalFilesDir(null).getAbsolutePath());
+
             boolean unZipReturnValue = UnZipAndBackup.unpackZip(picturePath,
                     picturePath
                     , context.getExternalFilesDir(null).getAbsolutePath());
             if (unZipReturnValue) {
                 LogUtils.logV(MainActivity.class.getSimpleName(), "File UnZipped Successfully");
                 CopyDatabase copyDatabase = new CopyDatabase(context);
+
+                LogUtils.logV(MainActivity.class.getSimpleName(), context.getExternalFilesDir(null) + "/ELENA/ELENA");
+                LogUtils.logV(MainActivity.class.getSimpleName(), String.valueOf(context.getDatabasePath("ELENA")));
+
                 boolean returnValue = copyDatabase.copyBackupDataBase(context.getExternalFilesDir(null) + "/ELENA/ELENA", context.getDatabasePath("ELENA"));
                 if (returnValue) {
                     LogUtils.logV(MainActivity.class.getSimpleName(), "Database Copied Successfully");
