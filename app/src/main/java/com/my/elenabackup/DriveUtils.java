@@ -40,9 +40,7 @@ public class DriveUtils {
 
         // DocumentProvider
         if (DocumentsContract.isDocumentUri(context, uri)) {
-            if (isGoogleDriveUri(uri)) {
-                return getDriveFilePath(uri, context);
-            }
+            return getDriveFilePath(uri, context);
         }
         // MediaStore (and general)
         else if ("content".equalsIgnoreCase(uri.getScheme())) {
